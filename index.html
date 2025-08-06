@@ -296,6 +296,11 @@
             box-shadow: 0 10px 30px rgba(79, 70, 229, 0.4);
         }
 
+        .service-icon svg {
+            width: 36px;
+            height: 36px;
+        }
+
         .service-card h3 {
             font-size: 1.5rem;
             font-weight: 600;
@@ -574,6 +579,13 @@
             opacity: 0.9;
         }
 
+        .contact-icon svg {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
         .contact-label {
             font-weight: 600;
             margin-bottom: 0.5rem;
@@ -626,11 +638,33 @@
             }
             
             .nav-links {
-                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10, 10, 26, 0.98);
+                backdrop-filter: blur(20px);
+                padding: 1rem 0;
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+
+                /* Animation */
+                opacity: 0;
+                transform: translateY(-15px);
+                visibility: hidden;
+                transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+                display: flex;
+            }
+
+            .navbar.mobile-nav-open .nav-links {
+                opacity: 1;
+                transform: translateY(0);
+                visibility: visible;
             }
             
             .mobile-menu {
-                display: flex;
+                display: flex; /* This ensures the hamburger is always visible on mobile */
             }
             
             .hero-stats {
@@ -645,6 +679,18 @@
             .container {
                 padding: 0 1.5rem;
             }
+        }
+
+        /* Scroll-reveal animation */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.17, 0.55, 0.55, 1), transform 0.8s cubic-bezier(0.17, 0.55, 0.55, 1);
+        }
+
+        .reveal-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -715,33 +761,41 @@
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
-            <h2 class="section-title">Professional Services</h2>
-            <p class="section-subtitle">Comprehensive development solutions tailored to your business needs</p>
+            <h2 class="section-title reveal-on-scroll">Professional Services</h2>
+            <p class="section-subtitle reveal-on-scroll">Comprehensive development solutions tailored to your business needs</p>
             
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🌐</div>
+                <div class="service-card reveal-on-scroll">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.5-6.026DB2.004 2.004 0 0012 3.026a9.004 9.004 0 00-8.5 6.026C3.004 12 5.667 15 12 15a8.97 8.97 0 005.974-2.073" /></svg>
+                    </div>
                     <h3>Business Websites</h3>
                     <p>Modern, responsive websites that convert visitors into customers. Perfect for restaurants, professionals, and growing businesses with SEO optimization and mobile-first design.</p>
                     <div class="service-price">$500 - $1,500</div>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">₿</div>
+                <div class="service-card reveal-on-scroll">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5l.415-.207a.75.75 0 011.085.67V10.5m0 0h6m-6 0v-1.5m0 1.5v1.5m0 0l.415.207a.75.75 0 001.085-.67V13.5m0 0h6m-6 0v-1.5m0 1.5v1.5m0 0l.415.207a.75.75 0 001.085-.67V16.5m0 0h6m-6 0v-1.5m0 1.5v1.5" /></svg>
+                    </div>
                     <h3>Cryptocurrency Solutions</h3>
                     <p>Advanced trading dashboards, portfolio trackers, arbitrage tools, and custom crypto applications with real-time data integration and secure API connections.</p>
                     <div class="service-price">$800 - $2,500</div>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">⚡</div>
+                <div class="service-card reveal-on-scroll">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                    </div>
                     <h3>Web Applications</h3>
                     <p>Custom business tools, admin dashboards, API integrations, and database-driven applications for enterprise clients with scalable architecture.</p>
                     <div class="service-price">$1,000 - $3,000</div>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-icon">🤖</div>
+                <div class="service-card reveal-on-scroll">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.562L16.5 21.75l-.398-1.188a3.375 3.375 0 00-2.3-2.3L12.75 18l1.188-.398a3.375 3.375 0 002.3-2.3L16.5 14.25l.398 1.188a3.375 3.375 0 002.3 2.3l1.188.398-1.188.398a3.375 3.375 0 00-2.3 2.3z" /></svg>
+                    </div>
                     <h3>AI Solutions</h3>
                     <p>Custom AI chatbots, machine learning models, workflow automation, and predictive analytics systems for intelligent business solutions.</p>
                     <div class="service-price">$1,500 - $5,000</div>
@@ -753,11 +807,11 @@
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-subtitle">Showcase of recent work and successful client solutions</p>
+            <h2 class="section-title reveal-on-scroll">Featured Projects</h2>
+            <p class="section-subtitle reveal-on-scroll">Showcase of recent work and successful client solutions</p>
             
             <div class="portfolio-grid">
-                <div class="portfolio-item">
+                <div class="portfolio-item reveal-on-scroll">
                     <div class="portfolio-image">📊</div>
                     <div class="portfolio-content">
                         <h3>CryptoTracker Pro</h3>
@@ -771,7 +825,7 @@
                     </div>
                 </div>
                 
-                <div class="portfolio-item">
+                <div class="portfolio-item reveal-on-scroll">
                     <div class="portfolio-image">🚀</div>
                     <div class="portfolio-content">
                         <h3>BusinessBoost Landing</h3>
@@ -785,7 +839,7 @@
                     </div>
                 </div>
                 
-                <div class="portfolio-item">
+                <div class="portfolio-item reveal-on-scroll">
                     <div class="portfolio-image">⚖️</div>
                     <div class="portfolio-content">
                         <h3>ArbitrageAlert System</h3>
@@ -799,7 +853,7 @@
                     </div>
                 </div>
                 
-                <div class="portfolio-item">
+                <div class="portfolio-item reveal-on-scroll">
                     <div class="portfolio-image">🍽️</div>
                     <div class="portfolio-content">
                         <h3>RestaurantPro Suite</h3>
@@ -813,7 +867,7 @@
                     </div>
                 </div>
                 
-                <div class="portfolio-item">
+                <div class="portfolio-item reveal-on-scroll">
                     <div class="portfolio-image">📈</div>
                     <div class="portfolio-content">
                         <h3>TradingView Clone</h3>
@@ -827,7 +881,7 @@
                     </div>
                 </div>
                 
-                <div class="portfolio-item">
+                <div class="portfolio-item reveal-on-scroll">
                     <div class="portfolio-image">🏥</div>
                     <div class="portfolio-content">
                         <h3>MedCare Dashboard</h3>
@@ -841,7 +895,7 @@
                     </div>
                 </div>
 
-                <div class="portfolio-item">
+                <div class="portfolio-item reveal-on-scroll">
                     <div class="portfolio-image">🧠</div>
                     <div class="portfolio-content">
                         <h3>AI Customer Service Bot</h3>
@@ -855,7 +909,7 @@
                     </div>
                 </div>
 
-                <div class="portfolio-item">
+                <div class="portfolio-item reveal-on-scroll">
                     <div class="portfolio-image">📊</div>
                     <div class="portfolio-content">
                         <h3>Predictive Analytics Dashboard</h3>
@@ -869,7 +923,7 @@
                     </div>
                 </div>
 
-                <div class="portfolio-item">
+                <div class="portfolio-item reveal-on-scroll">
                     <div class="portfolio-image">⚙️</div>
                     <div class="portfolio-content">
                         <h3>Workflow Automation System</h3>
@@ -889,11 +943,11 @@
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials">
         <div class="container">
-            <h2 class="section-title">Client Testimonials</h2>
-            <p class="section-subtitle">What our satisfied clients say about our work</p>
+            <h2 class="section-title reveal-on-scroll">Client Testimonials</h2>
+            <p class="section-subtitle reveal-on-scroll">What our satisfied clients say about our work</p>
             
             <div class="testimonials-grid">
-                <div class="testimonial-card">
+                <div class="testimonial-card reveal-on-scroll">
                     <p class="testimonial-text">"ProCryptoFX delivered an exceptional crypto trading dashboard that exceeded our expectations. The real-time data integration is flawless and our users love the interface."</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">M</div>
@@ -904,7 +958,7 @@
                     </div>
                 </div>
                 
-                <div class="testimonial-card">
+                <div class="testimonial-card reveal-on-scroll">
                     <p class="testimonial-text">"Professional, fast, and highly skilled. Our restaurant website increased online orders by 250% within the first month. Outstanding work!"</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">S</div>
@@ -915,7 +969,7 @@
                     </div>
                 </div>
                 
-                <div class="testimonial-card">
+                <div class="testimonial-card reveal-on-scroll">
                     <p class="testimonial-text">"The arbitrage tool has been a game-changer for our trading operations. Accurate, fast, and incredibly profitable. Highly recommended!"</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">D</div>
@@ -926,7 +980,7 @@
                     </div>
                 </div>
 
-                <div class="testimonial-card">
+                <div class="testimonial-card reveal-on-scroll">
                     <p class="testimonial-text">"The AI chatbot transformed our customer service operations, handling 80% of inquiries instantly while reducing costs by 40%. Brilliant solution!"</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">A</div>
@@ -949,17 +1003,23 @@
                 
                 <div class="contact-info">
                     <div class="contact-item">
-                        <span class="contact-icon">📧</span>
+                        <span class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                        </span>
                         <div class="contact-label">Email</div>
                         <div class="contact-value">procryptofx1@gmail.com</div>
                     </div>
                     <div class="contact-item">
-                        <span class="contact-icon">⚡</span>
+                        <span class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </span>
                         <div class="contact-label">Response Time</div>
                         <div class="contact-value">Within 2-4 hours</div>
                     </div>
                     <div class="contact-item">
-                        <span class="contact-icon">🌍</span>
+                        <span class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.5-6.026DB2.004 2.004 0 0012 3.026a9.004 9.004 0 00-8.5 6.026C3.004 12 5.667 15 12 15a8.97 8.97 0 005.974-2.073" /></svg>
+                        </span>
                         <div class="contact-label">Availability</div>
                         <div class="contact-value">Global Time Zones</div>
                     </div>
@@ -978,20 +1038,23 @@
     </footer>
 
     <script>
-        // Mobile menu functionality
+        // --- Refactored Mobile Menu Functionality ---
         const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-        
+        const navbar = document.querySelector('.navbar');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        // Toggle mobile nav visibility
         mobileMenu.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '100%';
-            navLinks.style.left = '0';
-            navLinks.style.right = '0';
-            navLinks.style.background = 'rgba(10, 10, 26, 0.95)';
-            navLinks.style.padding = '2rem';
-            navLinks.style.backdropFilter = 'blur(20px)';
+            navbar.classList.toggle('mobile-nav-open');
+        });
+
+        // Close mobile nav after a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navbar.classList.contains('mobile-nav-open')) {
+                    navbar.classList.remove('mobile-nav-open');
+                }
+            });
         });
 
         // Navbar scroll effect
@@ -1009,6 +1072,56 @@
         console.log('🚀 ProCryptoFX Portfolio Loaded Successfully!');
         console.log('💼 Professional Development Solutions Ready');
         console.log('📧 Contact: procryptofx1@gmail.com');
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Typing effect for hero title
+        const typingElement = document.querySelector('.hero-text h1');
+        const textToType = typingElement.innerText;
+        typingElement.innerText = '';
+        let i = 0;
+
+        function typeWriter() {
+            if (i < textToType.length) {
+                typingElement.innerHTML += textToType.charAt(i);
+                i++;
+                setTimeout(typeWriter, 60);
+            }
+        }
+
+        // Start typing animation when the page is loaded
+        window.addEventListener('load', () => {
+            setTimeout(typeWriter, 500); // Small delay before starting
+        });
+
+        // Scroll-reveal animations
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(element => {
+            revealObserver.observe(element);
+        });
     </script>
 </body>
 </html>
