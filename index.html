@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ProCryptoFX | Professional Development Solutions</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -21,6 +22,9 @@
             --text-primary: #ffffff;
             --bg-dark: #0a0a1a;
             --bg-darker: #070712;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
         }
 
         body {
@@ -100,6 +104,11 @@
             transition: all 0.3s ease;
         }
 
+        .navbar.scrolled {
+            background: rgba(10, 10, 26, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
         .nav-content {
             display: flex;
             justify-content: space-between;
@@ -112,6 +121,13 @@
             color: var(--text-primary);
             text-decoration: none;
             text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--accent-color);
         }
 
         .nav-links {
@@ -130,6 +146,32 @@
 
         .nav-links a:hover {
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .mobile-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
         }
 
         /* Hero Section */
@@ -219,6 +261,51 @@
             opacity: 0.8;
         }
 
+        /* Before/After Section */
+        .before-after {
+            padding: 5rem 0;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .ba-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .ba-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: all 0.5s ease;
+        }
+
+        .ba-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(79, 70, 229, 0.2);
+        }
+
+        .ba-metric {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .ba-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .ba-description {
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
         /* Services Grid */
         .services {
             padding: 8rem 0;
@@ -294,6 +381,7 @@
             font-size: 1.8rem;
             margin-bottom: 2rem;
             box-shadow: 0 10px 30px rgba(79, 70, 229, 0.4);
+            color: white;
         }
 
         .service-icon svg {
@@ -320,6 +408,87 @@
             font-weight: 700;
             color: var(--text-primary);
             letter-spacing: 0.5px;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1.5rem;
+        }
+
+        .tech-badge {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Pricing Calculator */
+        .pricing-calculator {
+            padding: 5rem 0;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .calculator-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem;
+        }
+
+        .calculator-form select, 
+        .calculator-form input {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .calculator-form select:focus, 
+        .calculator-form input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .calculator-form button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .calculator-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.4);
+        }
+
+        #price-result {
+            margin-top: 2rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            display: none;
         }
 
         /* Portfolio Grid */
@@ -410,6 +579,80 @@
             font-size: 0.85rem;
             border: 1px solid rgba(79, 70, 229, 0.3);
             backdrop-filter: blur(5px);
+        }
+
+        /* Process Timeline */
+        .process {
+            padding: 8rem 0;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 4rem auto 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 10px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border: 4px solid var(--accent-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+            text-align: right;
+        }
+
+        .right {
+            left: 50%;
+            text-align: left;
+        }
+
+        .left::after {
+            right: -12px;
+        }
+
+        .right::after {
+            left: -12px;
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+        }
+
+        .timeline-day {
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
         }
 
         /* Testimonials */
@@ -558,6 +801,46 @@
             opacity: 1;
         }
 
+        /* Guarantee Section */
+        .guarantee {
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .guarantee-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .guarantee-badge {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            min-width: 200px;
+            transition: all 0.3s ease;
+        }
+
+        .guarantee-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.2);
+        }
+
+        .guarantee-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .guarantee-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
         /* Contact Info */
         .contact-info {
             display: flex;
@@ -599,6 +882,97 @@
             opacity: 0.9;
         }
 
+        /* Chat Widget */
+        .chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .chat-bubble {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .chat-bubble:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: none;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .chat-title {
+            font-weight: 600;
+        }
+
+        .chat-close {
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .chat-message {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .chat-input {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: white;
+            margin-top: 1rem;
+        }
+
+        .chat-send {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            margin-top: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chat-send:hover {
+            background: var(--accent-color);
+        }
+
         /* Footer */
         .footer {
             padding: 3rem 0;
@@ -618,9 +992,32 @@
             .hero-text h1 {
                 font-size: 3rem;
             }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 20px;
+            }
+
+            .left, .right {
+                left: 0;
+                text-align: left;
+            }
         }
 
         @media (max-width: 768px) {
+            .hero {
+                padding-top: 120px;
+            }
+
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -633,7 +1030,8 @@
             
             .services-grid,
             .portfolio-grid,
-            .testimonials-grid {
+            .testimonials-grid,
+            .ba-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -648,13 +1046,10 @@
                 flex-direction: column;
                 align-items: center;
                 gap: 1.5rem;
-
-                /* Animation */
                 opacity: 0;
                 transform: translateY(-15px);
                 visibility: hidden;
                 transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-                display: flex;
             }
 
             .navbar.mobile-nav-open .nav-links {
@@ -664,7 +1059,7 @@
             }
             
             .mobile-menu {
-                display: flex; /* This ensures the hamburger is always visible on mobile */
+                display: flex;
             }
             
             .hero-stats {
@@ -678,6 +1073,14 @@
             
             .container {
                 padding: 0 1.5rem;
+            }
+
+            .calculator-form {
+                padding: 2rem;
+            }
+
+            .chat-window {
+                width: 300px;
             }
         }
 
@@ -706,10 +1109,11 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-content">
-                <a href="#" class="logo">ProCryptoFX</a>
+                <a href="#" class="logo"><i class="fas fa-code"></i> ProCryptoFX</a>
                 <ul class="nav-links">
                     <li><a href="#services">Services</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#process">Process</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -748,11 +1152,58 @@
                 
                 <div class="hero-visual">
                     <div class="service-card" style="margin: 0;">
-                        <div class="service-icon">💻</div>
+                        <div class="service-icon"><i class="fas fa-rocket"></i></div>
                         <h3>Ready to Start Your Project?</h3>
                         <p>Get a free consultation and detailed project proposal within 24 hours. Professional development services tailored to your needs.</p>
                         <div class="service-price">Starting at $500</div>
+                        <a href="#contact" class="cta-button" style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; font-size: 1rem;">Get Started</a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After Section -->
+    <section class="before-after">
+        <div class="container">
+            <h2 class="section-title reveal-on-scroll">Transform Your Digital Presence</h2>
+            <p class="section-subtitle reveal-on-scroll">See the dramatic improvements we've delivered for our clients</p>
+            
+            <div class="ba-grid">
+                <div class="ba-item reveal-on-scroll">
+                    <div class="ba-metric">8s → 2s</div>
+                    <h3 class="ba-title">Website Speed Optimization</h3>
+                    <p class="ba-description">Dramatically improved load times leading to 40% lower bounce rates and 25% higher conversions for e-commerce clients.</p>
+                </div>
+                
+                <div class="ba-item reveal-on-scroll">
+                    <div class="ba-metric">2% → 8%</div>
+                    <h3 class="ba-title">Conversion Rate Optimization</h3>
+                    <p class="ba-description">Redesigned landing pages with strategic CTAs increased lead capture by 300% for service businesses.</p>
+                </div>
+                
+                <div class="ba-item reveal-on-scroll">
+                    <div class="ba-metric">#50 → #5</div>
+                    <h3 class="ba-title">SEO Ranking Improvement</h3>
+                    <p class="ba-description">Comprehensive SEO strategies moved client websites to first page rankings for competitive keywords.</p>
+                </div>
+                
+                <div class="ba-item reveal-on-scroll">
+                    <div class="ba-metric">80% ↓</div>
+                    <h3 class="ba-title">Manual Work Reduction</h3>
+                    <p class="ba-description">Automation solutions eliminated repetitive tasks, saving clients 20+ hours per week in operations.</p>
+                </div>
+                
+                <div class="ba-item reveal-on-scroll">
+                    <div class="ba-metric">70% → 95%</div>
+                    <h3 class="ba-title">Mobile Responsiveness</h3>
+                    <p class="ba-description">Fixed mobile usability issues leading to better engagement from smartphone users.</p>
+                </div>
+                
+                <div class="ba-item reveal-on-scroll">
+                    <div class="ba-metric">5x ↑</div>
+                    <h3 class="ba-title">Lead Generation</h3>
+                    <p class="ba-description">Optimized funnels and chatbot integrations multiplied qualified leads for B2B clients.</p>
                 </div>
             </div>
         </div>
@@ -767,39 +1218,163 @@
             <div class="services-grid">
                 <div class="service-card reveal-on-scroll">
                     <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.5-6.026DB2.004 2.004 0 0012 3.026a9.004 9.004 0 00-8.5 6.026C3.004 12 5.667 15 12 15a8.97 8.97 0 005.974-2.073" /></svg>
+                        <i class="fas fa-laptop-code"></i>
                     </div>
                     <h3>Business Websites</h3>
                     <p>Modern, responsive websites that convert visitors into customers. Perfect for restaurants, professionals, and growing businesses with SEO optimization and mobile-first design.</p>
-                    <div class="service-price">$500 - $1,500</div>
+                    <div class="service-price">$1000 - $2,500</div>
+                    <div class="tech-badges">
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">SEO</span>
+                    </div>
                 </div>
                 
                 <div class="service-card reveal-on-scroll">
                     <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5l.415-.207a.75.75 0 011.085.67V10.5m0 0h6m-6 0v-1.5m0 1.5v1.5m0 0l.415.207a.75.75 0 001.085-.67V13.5m0 0h6m-6 0v-1.5m0 1.5v1.5m0 0l.415.207a.75.75 0 001.085-.67V16.5m0 0h6m-6 0v-1.5m0 1.5v1.5" /></svg>
+                        <i class="fas fa-coins"></i>
                     </div>
                     <h3>Cryptocurrency Solutions</h3>
                     <p>Advanced trading dashboards, portfolio trackers, arbitrage tools, and custom crypto applications with real-time data integration and secure API connections.</p>
-                    <div class="service-price">$800 - $2,500</div>
+                    <div class="service-price">$800 - $3,000</div>
+                    <div class="tech-badges">
+                        <span class="tech-badge">Blockchain</span>
+                        <span class="tech-badge">Web3</span>
+                        <span class="tech-badge">API</span>
+                        <span class="tech-badge">Node.js</span>
+                    </div>
                 </div>
                 
                 <div class="service-card reveal-on-scroll">
                     <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                        <i class="fas fa-globe"></i>
                     </div>
                     <h3>Web Applications</h3>
                     <p>Custom business tools, admin dashboards, API integrations, and database-driven applications for enterprise clients with scalable architecture.</p>
-                    <div class="service-price">$1,000 - $3,000</div>
+                    <div class="service-price">$1,000 - $3,500</div>
+                    <div class="tech-badges">
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">MongoDB</span>
+                        <span class="tech-badge">REST API</span>
+                    </div>
                 </div>
 
                 <div class="service-card reveal-on-scroll">
                     <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.898 20.562L16.5 21.75l-.398-1.188a3.375 3.375 0 00-2.3-2.3L12.75 18l1.188-.398a3.375 3.375 0 002.3-2.3L16.5 14.25l.398 1.188a3.375 3.375 0 002.3 2.3l1.188.398-1.188.398a3.375 3.375 0 00-2.3 2.3z" /></svg>
+                        <i class="fas fa-robot"></i>
                     </div>
-                    <h3>AI Solutions</h3>
-                    <p>Custom AI chatbots, machine learning models, workflow automation, and predictive analytics systems for intelligent business solutions.</p>
-                    <div class="service-price">$1,500 - $5,000</div>
+                    <h3>AI Chatbot Integration</h3>
+                    <p>Implement smart chatbots that handle 80% of customer inquiries automatically, reducing response times and operational costs.</p>
+                    <div class="service-price">$200 - $800</div>
+                    <div class="tech-badges">
+                        <span class="tech-badge">OpenAI GPT</span>
+                        <span class="tech-badge">Dialogflow</span>
+                        <span class="tech-badge">WhatsApp API</span>
+                        <span class="tech-badge">NLP</span>
+                    </div>
                 </div>
+                
+                <div class="service-card reveal-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Website Speed Optimization</h3>
+                    <p>Boost your site performance to meet Google Core Web Vitals, improving SEO rankings and user experience.</p>
+                    <div class="service-price">$150 - $500</div>
+                    <div class="tech-badges">
+                        <span class="tech-badge">CDN</span>
+                        <span class="tech-badge">Lazy Loading</span>
+                        <span class="tech-badge">Image Opt</span>
+                        <span class="tech-badge">Caching</span>
+                    </div>
+                </div>
+                
+                <div class="service-card reveal-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-commerce Optimization</h3>
+                    <p>Increase conversions with abandoned cart recovery, one-click checkout, and personalized recommendations.</p>
+                    <div class="service-price">$400 - $1,500</div>
+                    <div class="tech-badges">
+                        <span class="tech-badge">Shopify</span>
+                        <span class="tech-badge">WooCommerce</span>
+                        <span class="tech-badge">Stripe</span>
+                        <span class="tech-badge">A/B Testing</span>
+                    </div>
+                </div>
+                
+                <div class="service-card reveal-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Booking Systems</h3>
+                    <p>Automate appointments with online scheduling, payment processing, and calendar synchronization.</p>
+                    <div class="service-price">$250 - $800</div>
+                    <div class="tech-badges">
+                        <span class="tech-badge">Calendly</span>
+                        <span class="tech-badge">Stripe</span>
+                        <span class="tech-badge">Google Calendar</span>
+                        <span class="tech-badge">Zoom API</span>
+                    </div>
+                </div>
+                
+                <div class="service-card reveal-on-scroll">
+                    <div class="service-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <h3>Lead Generation Pages</h3>
+                    <p>High-converting landing pages with strategic CTAs, A/B testing, and CRM integration to capture more leads.</p>
+                    <div class="service-price">$200 - $600</div>
+                    <div class="tech-badges">
+                        <span class="tech-badge">HubSpot</span>
+                        <span class="tech-badge">Mailchimp</span>
+                        <span class="tech-badge">Google Analytics</span>
+                        <span class="tech-badge">Hotjar</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Calculator -->
+    <section class="pricing-calculator">
+        <div class="container">
+            <h2 class="section-title reveal-on-scroll">Get Instant Project Estimate</h2>
+            <p class="section-subtitle reveal-on-scroll">Calculate approximate costs for your specific requirements</p>
+            
+            <div class="calculator-form reveal-on-scroll">
+                <select id="project-type">
+                    <option value="">Select Project Type</option>
+                    <option value="business">Business Website</option>
+                    <option value="crypto">Cryptocurrency Solution</option>
+                    <option value="webapp">Web Application</option>
+                    <option value="chatbot">AI Chatbot Integration</option>
+                    <option value="speed">Website Speed Optimization</option>
+                    <option value="ecommerce">E-commerce Store</option>
+                    <option value="booking">Booking System</option>
+                    <option value="landing">Lead Generation Page</option>
+                </select>
+                
+                <select id="complexity">
+                    <option value="">Select Complexity</option>
+                    <option value="basic">Basic (Standard Features)</option>
+                    <option value="advanced">Advanced (Custom Features)</option>
+                    <option value="enterprise">Enterprise (Complex Systems)</option>
+                </select>
+                
+                <select id="timeline">
+                    <option value="">Select Timeline</option>
+                    <option value="rush">Rush (24-48 hours) +50%</option>
+                    <option value="standard">Standard (1 week)</option>
+                    <option value="economy">Economy (2+ weeks) -15%</option>
+                </select>
+                
+                <button onclick="calculatePrice()">Get Estimate</button>
+                
+                <div id="price-result"></div>
             </div>
         </div>
     </section>
@@ -812,128 +1387,90 @@
             
             <div class="portfolio-grid">
                 <div class="portfolio-item reveal-on-scroll">
-                    <div class="portfolio-image">📊</div>
+                    <div class="portfolio-image"><i class="fas fa-laptop-code"></i></div>
                     <div class="portfolio-content">
-                        <h3>CryptoTracker Pro</h3>
-                        <p>Real-time cryptocurrency portfolio management dashboard with advanced analytics, multi-exchange support, and automated profit/loss tracking.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">WebSocket</span>
-                            <span class="tech-tag">APIs</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item reveal-on-scroll">
-                    <div class="portfolio-image">🚀</div>
-                    <div class="portfolio-content">
-                        <h3>BusinessBoost Landing</h3>
-                        <p>High-converting landing page that increased client leads by 300% with modern design, A/B testing, and conversion optimization.</p>
+                        <h3>Business Website</h3>
+                        <p>Modern responsive website for a restaurant with online ordering system, menu display, and reservation functionality.</p>
                         <div class="tech-stack">
                             <span class="tech-tag">HTML5</span>
                             <span class="tech-tag">CSS3</span>
                             <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Analytics</span>
+                            <span class="tech-tag">SEO</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="portfolio-item reveal-on-scroll">
-                    <div class="portfolio-image">⚖️</div>
+                    <div class="portfolio-image"><i class="fas fa-coins"></i></div>
                     <div class="portfolio-content">
-                        <h3>ArbitrageAlert System</h3>
-                        <p>Multi-exchange price comparison tool for cryptocurrency arbitrage opportunities with real-time notifications and profit calculations.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">FastAPI</span>
-                            <span class="tech-tag">WebSocket</span>
-                            <span class="tech-tag">Redis</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item reveal-on-scroll">
-                    <div class="portfolio-image">🍽️</div>
-                    <div class="portfolio-content">
-                        <h3>RestaurantPro Suite</h3>
-                        <p>Complete restaurant management system with online ordering, table reservations, customer management, and payment processing.</p>
+                        <h3>Crypto Trading Dashboard</h3>
+                        <p>Advanced cryptocurrency trading platform with real-time market data, portfolio tracking, and technical analysis tools.</p>
                         <div class="tech-stack">
                             <span class="tech-tag">React</span>
                             <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">Stripe</span>
-                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">WebSocket</span>
+                            <span class="tech-tag">API</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="portfolio-item reveal-on-scroll">
-                    <div class="portfolio-image">📈</div>
+                    <div class="portfolio-image"><i class="fas fa-globe"></i></div>
                     <div class="portfolio-content">
-                        <h3>TradingView Clone</h3>
-                        <p>Advanced trading platform with real-time charts, technical indicators, and order management for forex and crypto markets.</p>
+                        <h3>Business Management App</h3>
+                        <p>Custom web application for inventory management, customer relationship tracking, and sales analytics.</p>
                         <div class="tech-stack">
                             <span class="tech-tag">Vue.js</span>
                             <span class="tech-tag">Express</span>
-                            <span class="tech-tag">Chart.js</span>
-                            <span class="tech-tag">WebSocket</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">REST API</span>
                         </div>
                     </div>
                 </div>
-                
-                <div class="portfolio-item reveal-on-scroll">
-                    <div class="portfolio-image">🏥</div>
-                    <div class="portfolio-content">
-                        <h3>MedCare Dashboard</h3>
-                        <p>Healthcare management platform with patient records, appointment scheduling, and telemedicine capabilities for medical practices.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Angular</span>
-                            <span class="tech-tag">NestJS</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">WebRTC</span>
-                        </div>
-                    </div>
-                </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="portfolio-item reveal-on-scroll">
-                    <div class="portfolio-image">🧠</div>
-                    <div class="portfolio-content">
-                        <h3>AI Customer Service Bot</h3>
-                        <p>Intelligent chatbot for e-commerce with natural language processing, order tracking, and personalized product recommendations.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">NLP</span>
-                            <span class="tech-tag">Dialogflow</span>
-                        </div>
+    <!-- Process Timeline -->
+    <section id="process" class="process">
+        <div class="container">
+            <h2 class="section-title reveal-on-scroll">Our Development Process</h2>
+            <p class="section-subtitle reveal-on-scroll">Transparent workflow that ensures quality and timely delivery</p>
+            
+            <div class="timeline reveal-on-scroll">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-day">Day 1</div>
+                        <h3>Project Analysis & Planning</h3>
+                        <p>Detailed requirements gathering, scope definition, and project roadmap creation.</p>
                     </div>
                 </div>
-
-                <div class="portfolio-item reveal-on-scroll">
-                    <div class="portfolio-image">📊</div>
-                    <div class="portfolio-content">
-                        <h3>Predictive Analytics Dashboard</h3>
-                        <p>AI-powered business intelligence tool that forecasts sales, customer behavior, and market trends with 90%+ accuracy.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">D3.js</span>
-                            <span class="tech-tag">AWS</span>
-                        </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-day">Day 2-3</div>
+                        <h3>Development & Implementation</h3>
+                        <p>Coding, integration, and initial implementation of all features.</p>
                     </div>
                 </div>
-
-                <div class="portfolio-item reveal-on-scroll">
-                    <div class="portfolio-image">⚙️</div>
-                    <div class="portfolio-content">
-                        <h3>Workflow Automation System</h3>
-                        <p>Enterprise-grade automation platform that reduced manual processes by 80% through intelligent document processing and RPA.</p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">RPA</span>
-                            <span class="tech-tag">Azure</span>
-                        </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-day">Day 4</div>
+                        <h3>Testing & Quality Assurance</h3>
+                        <p>Rigorous testing across devices and scenarios to ensure flawless performance.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-day">Day 5</div>
+                        <h3>Delivery & Training</h3>
+                        <p>Handover of completed project with documentation and training session.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-day">Day 6-7</div>
+                        <h3>Support & Optimization</h3>
+                        <p>Post-launch monitoring, bug fixes, and performance optimization.</p>
                     </div>
                 </div>
             </div>
@@ -970,17 +1507,6 @@
                 </div>
                 
                 <div class="testimonial-card reveal-on-scroll">
-                    <p class="testimonial-text">"The arbitrage tool has been a game-changer for our trading operations. Accurate, fast, and incredibly profitable. Highly recommended!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">D</div>
-                        <div class="author-info">
-                            <h4>David Chen</h4>
-                            <p>Founder, CryptoArb Pro</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card reveal-on-scroll">
                     <p class="testimonial-text">"The AI chatbot transformed our customer service operations, handling 80% of inquiries instantly while reducing costs by 40%. Brilliant solution!"</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">A</div>
@@ -989,6 +1515,62 @@
                             <p>CEO, TechRetail Inc.</p>
                         </div>
                     </div>
+                </div>
+
+                <div class="testimonial-card reveal-on-scroll">
+                    <p class="testimonial-text">"Our custom web application has streamlined our operations like never before. The team understood our complex requirements and delivered beyond expectations."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">J</div>
+                        <div class="author-info">
+                            <h4>James Wilson</h4>
+                            <p>Operations Director, Enterprise Corp</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal-on-scroll">
+                    <p class="testimonial-text">"The speed optimization service took our site from 8s to 2s load time, resulting in a 35% increase in conversions. Worth every penny!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">E</div>
+                        <div class="author-info">
+                            <h4>Emily Chen</h4>
+                            <p>Marketing Director, EcomStore</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section class="guarantee">
+        <div class="container">
+            <h2 class="section-title reveal-on-scroll">Our Guarantees</h2>
+            <p class="section-subtitle reveal-on-scroll">We stand behind our work with these promises</p>
+            
+            <div class="guarantee-badges">
+                <div class="guarantee-badge reveal-on-scroll">
+                    <div class="guarantee-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3 class="guarantee-title">100% Satisfaction</h3>
+                    <p>Money-back guarantee if you're not completely satisfied</p>
+                </div>
+                
+                <div class="guarantee-badge reveal-on-scroll">
+                    <div class="guarantee-icon"><i class="fas fa-bug"></i></div>
+                    <h3 class="guarantee-title">30-Day Support</h3>
+                    <p>Free bug fixes and support for 30 days after delivery</p>
+                </div>
+                
+                <div class="guarantee-badge reveal-on-scroll">
+                    <div class="guarantee-icon"><i class="fas fa-clock"></i></div>
+                    <h3 class="guarantee-title">Fast Response</h3>
+                    <p>Guaranteed response within 2 hours during business hours</p>
+                </div>
+                
+                <div class="guarantee-badge reveal-on-scroll">
+                    <div class="guarantee-icon"><i class="fas fa-calendar-check"></i></div>
+                    <h3 class="guarantee-title">On-Time Delivery</h3>
+                    <p>Completed projects delivered by promised deadline</p>
                 </div>
             </div>
         </div>
@@ -1037,50 +1619,60 @@
         </div>
     </footer>
 
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <div class="chat-bubble" onclick="toggleChat()">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <div class="chat-window">
+            <div class="chat-header">
+                <div class="chat-title">How can we help?</div>
+                <div class="chat-close" onclick="toggleChat()">×</div>
+            </div>
+            <div class="chat-message">
+                Hi there! 👋 Have questions about our services or want to discuss a project? Send us a message!
+            </div>
+            <input type="text" class="chat-input" placeholder="Type your message...">
+            <button class="chat-send" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
     <script>
-        // --- Refactored Mobile Menu Functionality ---
+        // Mobile Menu Toggle
         const mobileMenu = document.querySelector('.mobile-menu');
         const navbar = document.querySelector('.navbar');
         const navLinks = document.querySelectorAll('.nav-links a');
 
-        // Toggle mobile nav visibility
         mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
             navbar.classList.toggle('mobile-nav-open');
         });
 
-        // Close mobile nav after a link is clicked
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 if (navbar.classList.contains('mobile-nav-open')) {
+                    mobileMenu.classList.remove('active');
                     navbar.classList.remove('mobile-nav-open');
                 }
             });
         });
 
-        // Navbar scroll effect
+        // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(10, 10, 26, 0.95)';
-                navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
+                navbar.classList.add('scrolled');
             } else {
-                navbar.style.background = 'rgba(10, 10, 26, 0.85)';
-                navbar.style.boxShadow = 'none';
+                navbar.classList.remove('scrolled');
             }
         });
 
-        console.log('🚀 ProCryptoFX Portfolio Loaded Successfully!');
-        console.log('💼 Professional Development Solutions Ready');
-        console.log('📧 Contact: procryptofx1@gmail.com');
-
-        // Smooth scrolling for anchor links
+        // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
-
+                
                 if (targetElement) {
                     targetElement.scrollIntoView({
                         behavior: 'smooth',
@@ -1090,7 +1682,7 @@
             });
         });
 
-        // Typing effect for hero title
+        // Typing Effect
         const typingElement = document.querySelector('.hero-text h1');
         const textToType = typingElement.innerText;
         typingElement.innerText = '';
@@ -1104,12 +1696,11 @@
             }
         }
 
-        // Start typing animation when the page is loaded
         window.addEventListener('load', () => {
-            setTimeout(typeWriter, 500); // Small delay before starting
+            setTimeout(typeWriter, 500);
         });
 
-        // Scroll-reveal animations
+        // Scroll Reveal Animations
         const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1122,6 +1713,75 @@
         document.querySelectorAll('.reveal-on-scroll').forEach(element => {
             revealObserver.observe(element);
         });
+
+        // Pricing Calculator
+        function calculatePrice() {
+            const projectType = document.getElementById('project-type').value;
+            const complexity = document.getElementById('complexity').value;
+            const timeline = document.getElementById('timeline').value;
+            
+            if (!projectType || !complexity || !timeline) {
+                alert('Please fill all fields to get an estimate');
+                return;
+            }
+            
+            let basePrice = 0;
+            
+            // Set base price based on project type
+            switch(projectType) {
+                case 'business': basePrice = 1500; break;
+                case 'crypto': basePrice = 1800; break;
+                case 'webapp': basePrice = 2000; break;
+                case 'chatbot': basePrice = 500; break;
+                case 'speed': basePrice = 300; break;
+                case 'ecommerce': basePrice = 800; break;
+                case 'booking': basePrice = 600; break;
+                case 'landing': basePrice = 400; break;
+            }
+            
+            // Adjust for complexity
+            switch(complexity) {
+                case 'basic': basePrice *= 1; break;
+                case 'advanced': basePrice *= 1.5; break;
+                case 'enterprise': basePrice *= 2; break;
+            }
+            
+            // Adjust for timeline
+            switch(timeline) {
+                case 'rush': basePrice *= 1.5; break;
+                case 'standard': basePrice *= 1; break;
+                case 'economy': basePrice *= 0.85; break;
+            }
+            
+            // Display result
+            const priceResult = document.getElementById('price-result');
+            priceResult.textContent = `Estimated Cost: $${Math.round(basePrice)} - $${Math.round(basePrice * 1.3)}`;
+            priceResult.style.display = 'block';
+        }
+
+        // Chat Widget
+        function toggleChat() {
+            const chatWindow = document.querySelector('.chat-window');
+            chatWindow.style.display = chatWindow.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function sendMessage() {
+            const input = document.querySelector('.chat-input');
+            const message = input.value.trim();
+            
+            if (message) {
+                alert('Thank you for your message! We will respond shortly.');
+                input.value = '';
+                toggleChat();
+                
+                // In a real implementation, you would send this to your backend
+                console.log('New message:', message);
+            }
+        }
+
+        console.log('🚀 ProCryptoFX Portfolio Loaded Successfully!');
+        console.log('💼 Professional Development Solutions Ready');
+        console.log('📧 Contact: procryptofx1@gmail.com');
     </script>
 </body>
 </html>
